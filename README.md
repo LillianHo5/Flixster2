@@ -16,7 +16,7 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Improve and customize the user interface through styling and coloring
+- [x] Improve and customize the user interface through styling and coloring
 - [ ] Implement orientation responsivity
   - App should neatly arrange data in both landscape and portrait mode
 - [ ] Implement Glide to display placeholder graphics during loading
@@ -24,8 +24,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-List anything else that you can get done to improve the app functionality!
-- [x] Customized Actionbar (changed from default color)
+- [ ]List anything else that you can get done to improve the app functionality!
 
 ## Video Walkthrough
 
@@ -43,6 +42,7 @@ GIF created with LiceCap
 ## Notes
 
 Describe any challenges encountered while building the app.
+* Views kept overlapping with each other
 
 ## License
 
