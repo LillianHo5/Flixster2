@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
+
 /**
  * [RecyclerView.Adapter] that can display a [LatestMovie] and makes a call to the
  * specified [OnListFragmentInteractionListener].
@@ -32,11 +33,10 @@ class LatestMovieRecyclerViewAdapter(
     inner class MovieViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         var mItem: LatestMovie? = null
         val mMovieTitle: TextView = mView.findViewById<View>(R.id.movie_title) as TextView
-        val mMovieOverview: TextView = mView.findViewById<View>(R.id.movie_overview) as TextView
         val mMoviePoster: ImageView = mView.findViewById<View>(R.id.movie_poster) as ImageView
 
         override fun toString(): String {
-            return mMovieTitle.toString() + " '" + mMovieOverview.text + "'"
+            return mMovieTitle.toString() // + " '" + mMovieOverview.text + "'"
         }
     }
 
@@ -48,7 +48,6 @@ class LatestMovieRecyclerViewAdapter(
 
         holder.mItem = movie
         holder.mMovieTitle.text = movie.title
-        holder.mMovieOverview.text = movie.overview
 
         Glide.with(holder.mView)
             .load("https://image.tmdb.org/t/p/w500/" + movie.poster_path)

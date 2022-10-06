@@ -1,5 +1,6 @@
 package com.example.flixster
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.RequestParams
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.codepath.asynchttpclient.callback.TextHttpResponseHandler
+import com.example.flixster.DetailActivity
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
@@ -24,6 +26,10 @@ import org.json.JSONObject
 // CHANGE THIS TO BE YOUR API KEY  //
 // --------------------------------//
 private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+const val MOVIE_VOTE_AVERAGE = "MOVIE_VOTE_AVERAGE"
+const val MOVIE_TITLE = "MOVIE_TITLE"
+const val MOVIE_OVERVIEW = "MOVIE_OVERVIEW"
+const val MOVIE_POSTER_PATH = "MOVIE_POSTER_PATH"
 
 /*
  * The class for the only fragment in the app, which contains the progress bar,
@@ -42,7 +48,7 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
         val progressBar = view.findViewById<View>(R.id.progress) as ContentLoadingProgressBar
         val recyclerView = view.findViewById<View>(R.id.list) as RecyclerView
         val context = view.context
-        recyclerView.layoutManager = GridLayoutManager(context, 1)
+        recyclerView.layoutManager = GridLayoutManager(context, 2)
         updateAdapter(progressBar, recyclerView)
         return view
     }
@@ -61,8 +67,7 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
 
         // Using the client, perform the HTTP request
 
-        // Uncomment me once you complete the above sections!
-         client["https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", params, object :
+         client["https://api.themoviedb.org/3/movie/top_rated?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", params, object :
             JsonHttpResponseHandler() {
             /*
              * The onSuccess function gets called when
@@ -114,6 +119,14 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
      */
     override fun onItemClick(item: LatestMovie) {
         Toast.makeText(context, "test: " + item.title, Toast.LENGTH_LONG).show()
+
+        // Navigate to Details screen and pass selected article
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra(MOVIE_VOTE_AVERAGE, item.vote_average)
+        intent.putExtra(MOVIE_TITLE, item.title)
+        intent.putExtra(MOVIE_OVERVIEW, item.overview)
+        intent.putExtra(MOVIE_POSTER_PATH, item.poster_path)
+        context?.startActivity(intent)
     }
 
 }

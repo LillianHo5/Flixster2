@@ -21,9 +21,7 @@ class LatestMovie {
     @SerializedName("poster_path")
     var poster_path: String? = null
 
-
-    //TODO description
-
-
-    //TODO-STRETCH-GOALS amazonUrl
+    @JvmField
+    @SerializedName("vote_average")
+    var vote_average: Double? = null
 }
