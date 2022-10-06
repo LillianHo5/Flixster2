@@ -24,4 +24,8 @@ class LatestMovie {
     @JvmField
     @SerializedName("vote_average")
     var vote_average: Double? = null
+
+    @JvmField
+    @SerializedName("release_date")
+    var release_date: String? = null
 }

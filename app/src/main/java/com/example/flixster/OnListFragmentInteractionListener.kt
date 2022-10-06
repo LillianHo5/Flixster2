@@ -1,10 +1,10 @@
 package com.example.flixster
 
 /**
- * This interface is used by the [LatestMovieRecyclerViewAdapter] to ensure
+ * This interface is used by the [MovieRecyclerViewAdapter] to ensure
  * it has an appropriate Listener.
  *
- * In this app, it's implemented by [LatestMovieRecyclerViewAdapter]
+ * In this app, it's implemented by [MovieRecyclerViewAdapter]
  */
 interface OnListFragmentInteractionListener {
     fun onItemClick(item: LatestMovie)

@@ -30,6 +30,7 @@ const val MOVIE_VOTE_AVERAGE = "MOVIE_VOTE_AVERAGE"
 const val MOVIE_TITLE = "MOVIE_TITLE"
 const val MOVIE_OVERVIEW = "MOVIE_OVERVIEW"
 const val MOVIE_POSTER_PATH = "MOVIE_POSTER_PATH"
+const val MOVIE_RELEASE_DATE = "MOVIE_RELEASE_DATE"
 
 /*
  * The class for the only fragment in the app, which contains the progress bar,
@@ -115,17 +116,15 @@ class LatestMovieFragment : Fragment(), OnListFragmentInteractionListener {
     }
 
     /*
-     * What happens when a particular book is clicked.
+     * What happens when a particular movie is clicked.
      */
     override fun onItemClick(item: LatestMovie) {
-        Toast.makeText(context, "test: " + item.title, Toast.LENGTH_LONG).show()
-
-        // Navigate to Details screen and pass selected article
         val intent = Intent(context, DetailActivity::class.java)
         intent.putExtra(MOVIE_VOTE_AVERAGE, item.vote_average)
         intent.putExtra(MOVIE_TITLE, item.title)
         intent.putExtra(MOVIE_OVERVIEW, item.overview)
         intent.putExtra(MOVIE_POSTER_PATH, item.poster_path)
+        intent.putExtra(MOVIE_RELEASE_DATE, item.release_date)
         context?.startActivity(intent)
     }
 
